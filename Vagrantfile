@@ -9,6 +9,15 @@ Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+  
+  if Vagrant.has_plugin?("vagrant-proxyconf")  
+	puts "...[PROXY UP ]..."
+	config.proxy.http     = "http://proxy.wdf.sap.corp:8080" 
+	config.proxy.https    = "http://proxy.wdf.sap.corp:8080" 
+	config.proxy.no_proxy = "localhost,127/8,*.local,169.254/16,*.sap.corp,*.corp.sap,.sap.corp,.corp.sap"
+  else
+	puts "...[NO PROXY]..."
+  end
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
