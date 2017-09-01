@@ -30,6 +30,12 @@ Vagrant.configure("2") do |config|
 	    d.pull_images "postgres"
     end
 
+  # Run containers     
+    config.vm.provision "docker" do |d|             
+	    d.run "tomcat"             
+	    d.run "postgres"     
+    end
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
